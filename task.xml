@@ -1,4 +1,4 @@
-<project name="var" default="target3" basedir=".">
+<project name="var" default="target3" basedir="C:\Users\Administrator\Desktop">
 	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
 
 	<property name="name" value="Tom"/>
