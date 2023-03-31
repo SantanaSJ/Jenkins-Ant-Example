@@ -1,0 +1,45 @@
+<project name="var" default="target3" basedir=".">
+	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+
+	<property name="name" value="Tom"/>
+	<property name="name1" value="Cindy"/>
+	
+	<target name="target1">
+	
+		<echo>Create a directory</echo>
+	
+		<mkdir dir="sampleDir"/>
+		<touch file="taskFile.txt"/>
+		<echo file="taskFile.txt" append="true">Hello, ${name1}! ${line.separator}</echo>
+		<move file="taskFile.txt" todir="sampleDir"/>
+	</target>
+	
+	<target name="target2" depends="target1">
+		<if>
+			<equals arg1="${name}" arg2="Brayan"/>
+			<then>
+				<echo file="sampleDir/taskFile.txt" append="true">It's me ${name} and I'm your brother! ${line.separator}</echo>
+				<echo>Success</echo>
+			</then>
+			
+			<elseif>
+				<equals arg1="${name}" arg2="Emily"/>
+				<then>
+					<echo file="sampleDir/taskFile.txt" append="true">It's me ${name} and I'm your best friend! ${line.separator}</echo>
+					<echo>Success</echo>
+				</then>
+			</elseif>
+			
+			<else>
+				<echo file="sampleDir/taskFile.txt" append="true">It's me ${name} and I'm your teammate! ${line.separator}</echo>
+				<echo>Success</echo>
+			</else>
+		</if>
+	</target>
+	
+	<target name="target3" depends="target2">
+		<loadfile property="contents" srcFile="sampleDir/taskFile.txt"/>
+		<echo message="${contents}"/>
+	</target>
+	
+</project>
