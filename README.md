@@ -1,1 +1,1 @@
-# Simple example of Jenkins with Ant
+# Jenkins with Ant
